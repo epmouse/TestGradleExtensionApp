@@ -1,0 +1,22 @@
+apply plugin: 'groovy'
+apply plugin: 'maven'
+apply plugin: 'java-library'
+
+dependencies {
+    compile gradleApi()
+    compile localGroovy()
+    compile 'com.android.tools.build:gradle:3.5.1'
+}
+repositories {
+    jcenter()
+}
+
+uploadArchives {
+    repositories.mavenDeployer {
+        repository(url: uri('../testExtension'))
+        pom.groupId = 'com.zyxj.aopplugin'
+        pom.artifactId = 'maid'
+
+        pom.version = '1.0.0'
+    }
+}
